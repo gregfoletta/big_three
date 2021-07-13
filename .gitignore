@@ -3,3 +3,4 @@
 .terraform/*
 *.hcl
 **/.terraform
+*.swp

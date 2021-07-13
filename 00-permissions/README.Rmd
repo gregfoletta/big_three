@@ -1,0 +1,10 @@
+---
+title: My RMarkdown
+author: Yihui Xie
+output: md_document
+---
+
+
+# AWS
+
+Link to the [Terraform file](aws/base.tf).

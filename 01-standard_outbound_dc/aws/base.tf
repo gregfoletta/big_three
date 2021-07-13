@@ -1,5 +1,6 @@
 provider "aws" {
   region     = "ap-southeast-2"
+  shared_credentials_file = "~/.aws/terraform_credentials"
 }
 
 ### Set up the VPCs - Prod, Dev and Shared  ### 
