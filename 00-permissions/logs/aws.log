@@ -43,8 +43,8 @@ Terraform will perform the following actions:
 [0m[1mPlan:[0m 3 to add, 0 to change, 0 to destroy.
 [0m[0m[1maws_iam_group.study: Creating...[0m[0m
 [0m[1maws_iam_user.study: Creating...[0m[0m
-[0m[1maws_iam_group.study: Creation complete after 2s [id=study][0m
-[0m[1maws_iam_user.study: Creation complete after 2s [id=study][0m
+[0m[1maws_iam_group.study: Creation complete after 3s [id=study][0m
+[0m[1maws_iam_user.study: Creation complete after 3s [id=study][0m
 [0m[1maws_iam_group_membership.study: Creating...[0m[0m
 [0m[1maws_iam_group_membership.study: Creation complete after 2s [id=study_group_membership][0m
 [0m[1m[32m

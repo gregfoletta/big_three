@@ -4,13 +4,23 @@ author: Greg Foletta
 output: md_document
 ---
 
+```{zsh include=FALSE}
+# Need to delete all our AWS IAM access keys
+aws iam list-access-keys --user-name study | jq '.[][].AccessKeyId' | xargs -L1 -I'{}' aws iam delete-access-key --user-name study --access-key {}
+
+# Destroy the current AWS user and group
+cd aws
+terraform destroy -auto-approve
+```
+
+
 It's very tempting to get straight into creating infrastructure, but, like in an ideal real world, I wanted to make sure that security was built-in from the start and use the 'Principle of Least Privilege' in all of the scenarios.
 
 For all of the infrastructure as code that is written, applied, and destroyed in each provider, we will do this using a 'study' account which is a member of a 'study' group. For each scenario, before we do perform any creation of infrastructure, we'll make sue to define policies or permissions that we limit the blast raduius, ensuring that this user can only create and destory certain designated elements.
 
 # AWS
 
-**[AWS IAM Terraform Code]**
+**[AWS IAM Terraform Code](00-permissions/aws/00-user_group.tf)**
 
 We'll be using the IAM functionality to ring fence our study access. We create a *study* group, a *study* user, and we add the user into the group.
 
@@ -25,7 +35,7 @@ cd aws
 terraform apply -auto-approve > ../logs/aws.log
 ```
 
-You can see the raw logs for this Terraform application [here](00-permissions/logs/aws.log).
+You can see the raw logs for this Terraform application [here](logs/aws.log).
 
 We also need to generate an access key to use. I'm going to do that using the AWS CLI, rather than Terraform. I've also made sure I add the line "*.priv.txt" to my .gitignore file to I don't accidently advertise my IAM key to the whole world.
 
