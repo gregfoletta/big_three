@@ -12,7 +12,7 @@ this user can only create and destory certain designated elements.
 
 # AWS
 
-**[AWS IAM Terraform Code](00-permissions/aws/00-user_group.tf)**
+**[AWS IAM Terraform Code](aws/00-user_group.tf)**
 
 We’ll be using the IAM functionality to ring fence our study access. We
 create a *study* group, a *study* user, and we add the user into the
@@ -31,7 +31,7 @@ refer to all groups under ‘/groups/business\_unit\_a/’ using the arn
 Let’s build these users and groups using Terraform.
 
     cd aws
-    terraform apply -auto-approve > ../logs/aws.log
+    terraform apply -auto-approve -no-color > ../logs/aws.log
 
 You can see the raw logs for this Terraform application
 [here](logs/aws.log).
@@ -50,10 +50,10 @@ my IAM key to the whole world.
     ## {
     ##   "AccessKey": {
     ##     "UserName": "study",
-    ##     "AccessKeyId": "AKIA5BTYAKZGO64HGGVU",
+    ##     "AccessKeyId": "AKIA5BTYAKZGFPI4OILJ",
     ##     "Status": "Active",
     ##     "SecretAccessKey": "<REDACTED>",
-    ##     "CreateDate": "2021-07-19T04:56:10Z"
+    ##     "CreateDate": "2021-07-19T04:58:37Z"
     ##   }
     ## }
 

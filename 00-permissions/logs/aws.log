@@ -1,52 +1,51 @@
 
 Terraform used the selected providers to generate the following execution
 plan. Resource actions are indicated with the following symbols:
-  [32m+[0m create
-[0m
+  + create
+
 Terraform will perform the following actions:
 
-[1m  # aws_iam_group.study[0m will be created[0m[0m
-[0m  [32m+[0m[0m resource "aws_iam_group" "study" {
-      [32m+[0m [0m[1m[0marn[0m[0m       = (known after apply)
-      [32m+[0m [0m[1m[0mid[0m[0m        = (known after apply)
-      [32m+[0m [0m[1m[0mname[0m[0m      = "study"
-      [32m+[0m [0m[1m[0mpath[0m[0m      = "/groups/"
-      [32m+[0m [0m[1m[0munique_id[0m[0m = (known after apply)
+  # aws_iam_group.study will be created
+  + resource "aws_iam_group" "study" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "study"
+      + path      = "/groups/"
+      + unique_id = (known after apply)
     }
 
-[1m  # aws_iam_group_membership.study[0m will be created[0m[0m
-[0m  [32m+[0m[0m resource "aws_iam_group_membership" "study" {
-      [32m+[0m [0m[1m[0mgroup[0m[0m = "study"
-      [32m+[0m [0m[1m[0mid[0m[0m    = (known after apply)
-      [32m+[0m [0m[1m[0mname[0m[0m  = "study_group_membership"
-      [32m+[0m [0m[1m[0musers[0m[0m = [
-          [32m+[0m [0m"study",
+  # aws_iam_group_membership.study will be created
+  + resource "aws_iam_group_membership" "study" {
+      + group = "study"
+      + id    = (known after apply)
+      + name  = "study_group_membership"
+      + users = [
+          + "study",
         ]
     }
 
-[1m  # aws_iam_user.study[0m will be created[0m[0m
-[0m  [32m+[0m[0m resource "aws_iam_user" "study" {
-      [32m+[0m [0m[1m[0marn[0m[0m           = (known after apply)
-      [32m+[0m [0m[1m[0mforce_destroy[0m[0m = false
-      [32m+[0m [0m[1m[0mid[0m[0m            = (known after apply)
-      [32m+[0m [0m[1m[0mname[0m[0m          = "study"
-      [32m+[0m [0m[1m[0mpath[0m[0m          = "/users/"
-      [32m+[0m [0m[1m[0mtags[0m[0m          = {
-          [32m+[0m [0m"category" = "big_three"
+  # aws_iam_user.study will be created
+  + resource "aws_iam_user" "study" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "study"
+      + path          = "/users/"
+      + tags          = {
+          + "category" = "big_three"
         }
-      [32m+[0m [0m[1m[0mtags_all[0m[0m      = {
-          [32m+[0m [0m"category" = "big_three"
+      + tags_all      = {
+          + "category" = "big_three"
         }
-      [32m+[0m [0m[1m[0munique_id[0m[0m     = (known after apply)
+      + unique_id     = (known after apply)
     }
 
-[0m[1mPlan:[0m 3 to add, 0 to change, 0 to destroy.
-[0m[0m[1maws_iam_group.study: Creating...[0m[0m
-[0m[1maws_iam_user.study: Creating...[0m[0m
-[0m[1maws_iam_group.study: Creation complete after 3s [id=study][0m
-[0m[1maws_iam_user.study: Creation complete after 3s [id=study][0m
-[0m[1maws_iam_group_membership.study: Creating...[0m[0m
-[0m[1maws_iam_group_membership.study: Creation complete after 2s [id=study_group_membership][0m
-[0m[1m[32m
+Plan: 3 to add, 0 to change, 0 to destroy.
+aws_iam_group.study: Creating...
+aws_iam_user.study: Creating...
+aws_iam_group.study: Creation complete after 2s [id=study]
+aws_iam_user.study: Creation complete after 2s [id=study]
+aws_iam_group_membership.study: Creating...
+aws_iam_group_membership.study: Creation complete after 2s [id=study_group_membership]
+
 Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-[0m

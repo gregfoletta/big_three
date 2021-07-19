@@ -20,7 +20,7 @@ For all of the infrastructure as code that is written, applied, and destroyed in
 
 # AWS
 
-**[AWS IAM Terraform Code](00-permissions/aws/00-user_group.tf)**
+**[AWS IAM Terraform Code](aws/00-user_group.tf)**
 
 We'll be using the IAM functionality to ring fence our study access. We create a *study* group, a *study* user, and we add the user into the group.
 
@@ -32,7 +32,7 @@ Let's build these users and groups using Terraform.
 
 ```{zsh}
 cd aws
-terraform apply -auto-approve > ../logs/aws.log
+terraform apply -auto-approve -no-color > ../logs/aws.log
 ```
 
 You can see the raw logs for this Terraform application [here](logs/aws.log).
