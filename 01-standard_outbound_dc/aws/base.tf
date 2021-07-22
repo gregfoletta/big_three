@@ -57,9 +57,8 @@ resource "aws_internet_gateway" "prod" {
   }
 }
 
-### Routes ###
-#resource "aws_route" "prod_default" {
-#  route_table_id = aws_route_table.prod.id
-#  destination_cidr_block = "0.0.0.0/0"
-#  gateway_id = aws_internet_gateway.prod.id
-#}
+resource "aws_route" "prod_default" {
+  route_table_id = aws_route_table.prod.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.prod.id
+}

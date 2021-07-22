@@ -1,6 +1,11 @@
+variable "gcp_prj_id" {
+  type = string
+  default = "prj-gf-study-1"
+}
+
 provider "google" {
   region  = "australia-southeast2"
-  project = "big-three-11223344"
+  project = var.gcp_prj_id
 }
 
 data "google_organization" "org" {
@@ -12,22 +17,24 @@ data "google_billing_account" "billing" {
   open         = true
 }
 
-resource "google_project" "main" {
-  name            = "big-three"
-  project_id      = "big-three-11223344"
-  org_id          = data.google_organization.org.org_id
-  billing_account  = data.google_billing_account.billing.id
-}
-
 resource "google_project_service" "project" {
-  project = google_project.main.id
+  project = var.gcp_prj_id
   service = "compute.googleapis.com"
   disable_dependent_services = true
 }
 
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [google_project_service.project]
+
+  create_duration = "30s"
+}
 
 resource "google_compute_network" "prod" {
   name = "prod-network"
+  auto_create_subnetworks = false
+  routing_mode = "REGIONAL"
+
+  depends_on = [time_sleep.wait_30_seconds]
 }
 
 resource "google_compute_subnetwork" "prod_a" {

@@ -1,3 +1,6 @@
+provider "aws" {
+  region     = "ap-southeast-2"
+}
 
 resource "aws_iam_policy" "ec2_admin" {
   name        = "EC2_Admin"
@@ -53,7 +56,7 @@ resource "aws_iam_policy" "ec2_admin" {
 }
 
 resource "aws_iam_group_policy_attachment" "ec2_admin" {
-  group      = aws_iam_group.study.name
+  group      = "study"
   policy_arn = aws_iam_policy.ec2_admin.arn
 }
 
